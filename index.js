@@ -1,5 +1,5 @@
 const express = require('express');
-const helmet = require("helmet");
+// const helmet = require("helmet");
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
@@ -30,7 +30,7 @@ router.post('/rsvp', (req, res) => {
     res.status(200).end()
 });
 
-app.use(helmet());
+// app.use(helmet());
 
 app.use(cors({
     origin: '*'
