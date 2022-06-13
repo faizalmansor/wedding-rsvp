@@ -30,10 +30,13 @@ router.post('/rsvp', (req, res) => {
     res.status(200).end()
 });
 
-router.get('/download', function(req, res){
-    const file = `rsvp.csv`;
-    res.download(file);
-    res.status(200).end();
+router.get('/readrsvpcsv', function(req, res){
+    const file = 'rsvp.csv';
+    fs.readFile(file, 'utf8', function(err, contents) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.write(contents);
+        res.end();
+    });
 });
 
 app.use(helmet());
