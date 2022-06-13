@@ -1,5 +1,5 @@
 const express = require('express');
-// const helmet = require("helmet");
+const helmet = require("helmet");
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
@@ -30,7 +30,13 @@ router.post('/rsvp', (req, res) => {
     res.status(200).end()
 });
 
-// app.use(helmet());
+router.get('/download', function(req, res){
+    const file = `rsvp.csv`;
+    res.download(file);
+    res.status(200).end();
+});
+
+app.use(helmet());
 
 app.use(cors({
     origin: '*'
